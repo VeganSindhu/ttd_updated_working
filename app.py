@@ -1,6 +1,10 @@
 import streamlit as st
 import tempfile
 import os
+import sys
+
+# 🔴 REQUIRED FOR STREAMLIT CLOUD
+sys.path.append(os.path.dirname(__file__))
 
 from ttd_filler_logic import generate_output
 
@@ -56,3 +60,4 @@ if orders_file and postal_file:
                     file_name="TTD_Final_Output.xlsx",
                     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                 )
+
