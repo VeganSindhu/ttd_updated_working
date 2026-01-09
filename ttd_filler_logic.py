@@ -99,6 +99,23 @@ def get_dimensions(vol, category, qty):
 
     return int(r["L"]), int(r["B"]), int(r["H"])
 
+def generate_output(
+    orders_path,
+    postal_path,
+    template_path,
+    volumetric_path,
+    output_path
+):
+    class Args:
+        input1 = orders_path
+        input2 = postal_path
+        template = template_path
+        volumetric = volumetric_path
+        output = output_path
+
+    main(Args())
+    return True
+
 # --------------------------------------------------
 # MAIN
 # --------------------------------------------------
@@ -240,3 +257,4 @@ if __name__ == "__main__":
     parser.add_argument("--volumetric", required=True)
     parser.add_argument("--output", required=True)
     main(parser.parse_args())
+
