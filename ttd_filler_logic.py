@@ -114,7 +114,7 @@ def generate_output(
         output = output_path
 
     main(Args())
-    return True
+    return count
 
 # --------------------------------------------------
 # MAIN
@@ -257,4 +257,5 @@ if __name__ == "__main__":
     parser.add_argument("--volumetric", required=True)
     parser.add_argument("--output", required=True)
     main(parser.parse_args())
+
 
