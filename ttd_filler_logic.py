@@ -113,8 +113,19 @@ def generate_output(
         volumetric = volumetric_path
         output = output_path
 
+    # Run main processing
     main(Args())
+
+    # ✅ SAFE COUNT LOGIC (NO NameError)
+    postal = pd.read_excel(postal_path, header=3)
+    pin_col = postal.columns[5]
+
+    count = postal[
+        pd.to_numeric(postal[pin_col], errors="coerce").between(100000, 999999)
+    ].shape[0]
+
     return count
+
 
 # --------------------------------------------------
 # MAIN
@@ -257,5 +268,6 @@ if __name__ == "__main__":
     parser.add_argument("--volumetric", required=True)
     parser.add_argument("--output", required=True)
     main(parser.parse_args())
+
 
 
